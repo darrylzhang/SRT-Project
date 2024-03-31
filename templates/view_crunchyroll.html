@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Cruncyroll</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cruncyrollstyle.css') }}">
+</head>
+<body>
+    <a href="/" class="home">Home</a>
+    <h1>Crunchyroll List</h1>
+    <table border="1">
+        <tr>
+            <th>Anime</th>
+            <th>Link</th>
+            <th>Episodes</th>
+            <th>Images</th>
+
+        </tr>
+        {% for user in user %}
+        <tr>
+            <td>{{user[0]}}</td>
+            <td>
+                <a href="{{user[1]}}" target="_blank">Link</a>
+            </td>
+            <td>{{user[3]}}</td>
+            <td class="img">
+                <img src="{{user[2]}}" alt="image">
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Anime</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='addstyle.css') }}">
 </head>
 <body>
     <h1>Update Anime</h1>
     <form method="post">
 
         <label for="anime">Anime:</label><br>
-        <div id="anime">{{ user[1] }}</div>
+        <div id="anime">{{ user[1] }}</div><br>
     
         <label for="rating">Rating:</label><br>
         <select id="rating" name="rating" required>
@@ -27,8 +27,8 @@
         </select><br>
          
         <label for="comment">Comments:</label><br>
-        <input type="text" id="comment" name="comment" value="{{ user[4] }}" required><br>
-        <input type="submit" value="Update">
+        <textarea class="box"type="text" id="comment" name="comment" value="{{ user[4] }}" required>{{ user[4] }}</textarea><br>
+        <input type="submit" value="Update" class="button">
     </form>
     
 </body>

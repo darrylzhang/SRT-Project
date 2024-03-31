@@ -69,12 +69,12 @@ def update_anime(id):
 
 
 #Displays the the anime available on cruncyroll
-@app.route('/view')
-def view_anime():
+@app.route('/viewcruncyroll')
+def view_cruncyroll():
     cursor=conn.cursor()
-    cursor.execute("select * from user")
+    cursor.execute("select * from crunchyroll")
     user=cursor.fetchall()
-    return render_template('view_cruncyroll.html',user=user)
+    return render_template('view_crunchyroll.html',user=user)
 
 if __name__=='__main__':
     app.run(debug=True)

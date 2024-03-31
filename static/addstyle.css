@@ -1,0 +1,50 @@
+body {
+    background-image: url(background3.jpeg); /*add background, entire page, and it wont repeat*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /*lock background when scroll*/
+    
+}
+
+
+h1{
+    top: 50px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+
+label{
+   
+    margin-left: 10%;
+
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+select{
+    margin-left: 10%;
+    height: 50px;
+    width: 200px;
+    font-size: 20px;
+}
+
+.box{
+    margin-left: 10%;
+    font-size: 25px;
+    height: 300px;
+    width: 400px;
+}
+.button{
+    margin-left: 10%;
+    font-size: 25px;
+}
+
+div{
+    margin-left: 10%;
+    font-size: 30px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: aliceblue;
+    display: inline-block;
+}

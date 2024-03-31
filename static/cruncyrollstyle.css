@@ -1,0 +1,40 @@
+img {
+    float: left;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+}
+table{
+    margin: 20px auto; /* Adjust margin as needed */
+
+    background-color: #fff; /* Background color for the table container */
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow effect */
+    text-align: center;
+}
+
+h1{
+    color: #000000;
+    box-shadow: #0b0b0b;
+    text-align: center;
+}
+
+body {
+    background-image: url(background2.jpg); /*add background, entire page, and it wont repeat*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /*lock background when scroll*/
+    
+}
+
+h1{
+    font-size: 100px;
+    color: rgb(255, 166, 0);
+}
+
+.home{
+    color: #e02d05;
+    font-size: 30px;
+    font-weight: bolder;
+}

@@ -1,0 +1,37 @@
+body {
+    top: 50px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url(background.webp); /*add background, entire page, and it wont repeat*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /*lock background when scroll*/
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 100px;
+    text-shadow: 2px 5px 4px rgb(0, 0, 0);/* Shadow effect */
+}
+
+h2 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 5px 4px rgb(0, 0, 0)/* Shadow effect */
+
+}
+
+a {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 2; /*adjust line space between each other*/
+    text-shadow: 2px 5px 4px rgb(0, 0, 0)/* Shadow effect */
+}
+
+a:hover {
+    color: rgb(186, 246, 6);
+    text-decoration: underline;
+}

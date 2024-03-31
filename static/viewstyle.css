@@ -1,0 +1,53 @@
+body {
+    background-image: url(923643.png); /*add background, entire page, and it wont repeat*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /*lock background when scroll*/
+    
+}
+
+a.link {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 2; /*adjust line space between each other*/
+}
+h1{
+    font-size: 100px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    text-align: center; /* Centers text horizontally */
+    margin: 0 auto; /* Centers the element horizontally within its parent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 5px 4px rgb(0, 0, 0)/* Shadow effect */
+}
+a:hover {
+    color: rgb(255, 0, 0);
+    text-decoration: underline;
+}
+
+.table{
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+table{
+    margin: 20px auto; /* Adjust margin as needed */
+
+    background-color: #fff; /* Background color for the table container */
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow effect */
+    
+}
+
+h1{
+    color: #1ad7ab;
+    box-shadow: #0b0b0b;
+}
