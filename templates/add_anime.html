@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add User</title>
+    <title>Add Anime</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Add a New User</h1>
+    <h1>Add Anime</h1>
     <form method="post" action="/add">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email" required><br>
-        <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address" required><br>
-        <label for="name">Mobile No.:</label><br>
-        <input type="text" id="mobile" name="mobile" required><br>
+        <label for="anime">Select Anime:</label>
+        <select id="anime" name="anime" required>
+            {% for anime in anime_names %}
+                <option value="{{ anime }}">{{ anime }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="rating">Rating:</label><br>
+        <select id="rating" name="rating" required>
+            {% for i in range(1,11)%}
+                <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select><br>
+        <label for="completed">Complete:</label><br>
+        <select id="completed" name="completed" required>
+            <option value="Complete">Complete</option>
+            <option value="Incomplete">Incomplete</option>
+        </select><br>
+        <label for="name">Comments:</label><br>
+        <input type="text" id="comment" name="comment" required><br>
         <input type="submit" value="submit">
     </form>
 </body>

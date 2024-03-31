@@ -9,26 +9,72 @@ conn=mysql.connector.connect(
         password='dragon',
         database='anime_database'
     )
-conn_user_database=mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='dragon',
-        database='user'   
-)
 
+#Displays the home page of the website
 @app.route('/')
 def home():
     return render_template('home.html')
-    
+
+#iF the user clicks on "Add Anime" It will display the add_anime page
 @app.route('/add', methods=['GET','POST'])
-def add_user():
+def add_anime():
+#Pulls the anime names from the cruncyroll database and displays the anime name in a drop down for the user to select
+    cursor = conn.cursor()
+    cursor.execute("SELECT anime FROM crunchyroll")
+    anime_names = [row[0] for row in cursor.fetchall()]
+    cursor.close()
+    
+#pulls all values inputed by the user
     if request.method == 'POST':
-        name=request.form['name']
+        anime=request.form['anime']
         rating=request.form['rating']
-        complete=request.form['complete']
+        complete=request.form['completed']
         comment=request.form['comment']
-        cursor = conn_user_database.cursor()
-        cursor.execute('INSERT INTO users (name,rating,complete,comment) values(%s,%s,%s,%s)',(name,rating,complete,comment))
-        conn_user_database.commit()
-        return redirect(url_for('home',message='Student Added Successfully!'))
-    return render_template('add_anime.html')
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO user (anime,rating,completed,comment) values(%s,%s,%s,%s)',(anime,rating,complete,comment))
+        conn.commit()
+        return redirect(url_for('home',message='Anime Added Successfully!'))
+    return render_template('add_anime.html', anime_names=anime_names)
+
+#Displays the view_list page if the user wants to see their list
+@app.route('/view')
+def view_anime():
+    cursor=conn.cursor()
+    cursor.execute("select * from user")
+    user=cursor.fetchall()
+    return render_template('view_your_list.html',user=user)
+
+#Deleted the anime entry
+@app.route('/delete/<int:id>',methods=['GET'])
+def delete_anime(id):
+    cursor=conn.cursor()
+    cursor.execute('DELETE from user where id=%s',(id,))
+    conn.commit()
+    return redirect(url_for('view_anime'))
+
+@app.route('/update/<int:id>',methods=['GET','POST'])
+def update_anime(id):
+    cursor= conn.cursor()
+    if request.method == 'POST':
+        rating=request.form['rating']
+        complete=request.form['completed']
+        comment=request.form['comment']
+        cursor = conn.cursor()
+        cursor.execute('UPDATE user set rating=%s, completed=%s, comment=%s where id=%s',(rating,complete,comment,id))
+        conn.commit()
+        return redirect(url_for('view_anime'))
+    cursor.execute('select * from user where id=%s',(id,))
+    user=cursor.fetchone()
+    return render_template('update_anime.html',user=user)
+
+
+#Displays the the anime available on cruncyroll
+@app.route('/view')
+def view_anime():
+    cursor=conn.cursor()
+    cursor.execute("select * from user")
+    user=cursor.fetchall()
+    return render_template('view_cruncyroll.html',user=user)
+
+if __name__=='__main__':
+    app.run(debug=True)

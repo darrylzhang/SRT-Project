@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Anime</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Update Anime</h1>
+    <form method="post">
+
+        <label for="anime">Anime:</label><br>
+        <div id="anime">{{ user[1] }}</div>
+    
+        <label for="rating">Rating:</label><br>
+        <select id="rating" name="rating" required>
+            {% for i in range(1, 11) %}
+                <option value="{{ i }}" {% if user[2] == i %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select><br>
+    
+        <label for="completed">Completed:</label><br>
+        <select id="completed" name="completed" required>
+            <option value="Complete" {% if user[3] == 'Complete' %}selected{% endif %}>Complete</option>
+            <option value="Incomplete" {% if user[3] == 'Incomplete' %}selected{% endif %}>Incomplete</option>
+        </select><br>
+         
+        <label for="comment">Comments:</label><br>
+        <input type="text" id="comment" name="comment" value="{{ user[4] }}" required><br>
+        <input type="submit" value="Update">
+    </form>
+    
+</body>
+</html>
