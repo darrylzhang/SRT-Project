@@ -1,8 +1,10 @@
 from flask import Flask,render_template, request,redirect,url_for
 import mysql.connector
+import datetime
 
 app = Flask(__name__)
-
+time=datetime.datetime.now()
+formatted_datetime = time.strftime("%Y-%m-%d %I:%M:%S %p")
 conn=mysql.connector.connect(
         host='localhost',
         user='root',
@@ -30,8 +32,9 @@ def add_anime():
         rating=request.form['rating']
         complete=request.form['completed']
         comment=request.form['comment']
+        last_update = formatted_datetime
         cursor = conn.cursor()
-        cursor.execute('INSERT INTO user (anime,rating,completed,comment) values(%s,%s,%s,%s)',(anime,rating,complete,comment))
+        cursor.execute('INSERT INTO user (anime,rating,completed,comment,last_updated) values(%s,%s,%s,%s,%s)',(anime,rating,complete,comment,last_update))
         conn.commit()
         return redirect(url_for('home',message='Anime Added Successfully!'))
     return render_template('add_anime.html', anime_names=anime_names)
@@ -59,8 +62,9 @@ def update_anime(id):
         rating=request.form['rating']
         complete=request.form['completed']
         comment=request.form['comment']
+        last_update = formatted_datetime
         cursor = conn.cursor()
-        cursor.execute('UPDATE user set rating=%s, completed=%s, comment=%s where id=%s',(rating,complete,comment,id))
+        cursor.execute('UPDATE user set rating=%s, completed=%s, comment=%s, last_updated=%s where id=%s',(rating,complete,comment,last_update,id))
         conn.commit()
         return redirect(url_for('view_anime'))
     cursor.execute('select * from user where id=%s',(id,))
