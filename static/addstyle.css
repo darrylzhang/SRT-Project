@@ -4,7 +4,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed; /*lock background when scroll*/
-    
 }
 
 
@@ -35,6 +34,7 @@ select{
     height: 300px;
     width: 400px;
 }
+
 .button{
     margin-left: 10%;
     font-size: 25px;
