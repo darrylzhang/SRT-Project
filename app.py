@@ -3,8 +3,6 @@ import mysql.connector
 import datetime
 
 app = Flask(__name__)
-time=datetime.datetime.now()
-formatted_datetime = time.strftime("%Y-%m-%d %I:%M:%S %p")
 conn=mysql.connector.connect(
         host='localhost',
         user='root',
@@ -32,6 +30,8 @@ def add_anime():
         rating=request.form['rating']
         complete=request.form['completed']
         comment=request.form['comment']
+        time=datetime.datetime.now()
+        formatted_datetime = time.strftime("%Y-%m-%d %I:%M:%S %p")
         last_update = formatted_datetime
         cursor = conn.cursor()
         cursor.execute('INSERT INTO user (anime,rating,completed,comment,last_updated) values(%s,%s,%s,%s,%s)',(anime,rating,complete,comment,last_update))
@@ -62,6 +62,8 @@ def update_anime(id):
         rating=request.form['rating']
         complete=request.form['completed']
         comment=request.form['comment']
+        time=datetime.datetime.now()
+        formatted_datetime = time.strftime("%Y-%m-%d %I:%M:%S %p")
         last_update = formatted_datetime
         cursor = conn.cursor()
         cursor.execute('UPDATE user set rating=%s, completed=%s, comment=%s, last_updated=%s where id=%s',(rating,complete,comment,last_update,id))
