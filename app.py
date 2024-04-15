@@ -10,6 +10,8 @@ conn=mysql.connector.connect(
         database='anime_database'
     )
 
+
+
 #Displays the home page of the website
 @app.route('/')
 def home():
@@ -45,7 +47,11 @@ def view_anime():
     cursor=conn.cursor()
     cursor.execute("select * from user")
     user=cursor.fetchall()
+
+    
     return render_template('view_your_list.html',user=user)
+    
+    
 
 #Deleted the anime entry
 @app.route('/delete/<int:id>',methods=['GET'])

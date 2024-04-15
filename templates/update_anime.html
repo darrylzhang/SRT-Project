@@ -16,11 +16,11 @@
         <label for="rating">Rating:</label><br>
         <select id="rating" name="rating" required>
             {% for i in range(1, 11) %}
-                <option value="{{ i }}" {% if user[2] == i %}selected{% endif %}>{{ i }}</option>
-            {% endfor %}
+                <option value="{{ i }}" {% if user[2] == i %}selected{% endif %}>{{ i }}</option>           
+                {% endfor %}
         </select><br>
     
-        <label for="completed">Completed:</label><br>
+        <label for="completed" >Completed:</label><br>
         <select id="completed" name="completed" required>
             <option value="Complete" {% if user[3] == 'Complete' %}selected{% endif %}>Complete</option>
             <option value="Incomplete" {% if user[3] == 'Incomplete' %}selected{% endif %}>Incomplete</option>
@@ -33,3 +33,4 @@
     
 </body>
 </html>
+
